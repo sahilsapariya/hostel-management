@@ -10,3 +10,8 @@ html {
     font-family: "Inter var", sans-serif;
   }
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}

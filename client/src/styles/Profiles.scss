@@ -1,0 +1,33 @@
+.profile__container {
+    width: 100%;
+    height: calc(100vh - 4rem);
+
+    .profile_selector__container {
+        width: 100%;
+        height: fit-content;
+        margin: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+            padding: 1rem;
+            .profiles {
+                display: flex;
+                padding: 1rem;
+                border: 2px solid rgb(255, 102, 0);
+                border-radius: 0.5rem;
+                button {
+                    background-color: white;
+                    border: none;
+                    margin: 0 1rem;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.5rem;
+                    border: 2px dashed #d2660d;
+                    font-family: inherit;
+                    font-size: inherit;
+                    cursor: pointer;
+                }
+            }
+        
+    }
+}

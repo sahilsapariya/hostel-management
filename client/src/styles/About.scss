@@ -1,0 +1,30 @@
+.about__container {
+    width: 100%;
+    height: calc(100vh - 4rem);
+    background-color: yellow;
+}
+
+
+.photo__container {
+    display: flex;
+
+}
+
+
+.profile_img {
+    width: 25rem;
+    height: 25rem;
+    position: relative;
+    z-index: 11;
+    // background-color: red;
+    overflow: hidden;
+}
+
+.profile_blob {
+    width: 40rem;
+    width: 40rem;
+    z-index: 10;
+    position: absolute;
+    // overflow: hidden;
+    // background-color: blue;
+}
