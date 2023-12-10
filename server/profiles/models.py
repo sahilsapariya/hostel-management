@@ -22,7 +22,7 @@ class Students(models.Model):
         return self.name
     
 
-class Clearns(models.Model):
+class Cleaners(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     address = models.CharField(max_length=100)
