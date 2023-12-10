@@ -29,30 +29,54 @@ const Profiles = () => {
   };
 
   const getCleaners = () => {
-    const cleaners = [
-      { name: "John", age: "16" },
-      { name: "Kevin", age: "20" },
-    ];
-
-    setCleaners(cleaners);
+    try {
+      axios
+        .get("http://localhost:8000/profiles/cleaners", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((resp) => resp)
+        .then((data) => setCleaners(data.data))
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const getGuards = () => {
-    const guards = [
-      { name: "Brian", age: "16" },
-      { name: "Alexander", age: "20" },
-    ];
-
-    setGuards(guards);
+    try {
+      axios
+        .get("http://localhost:8000/profiles/guards", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((resp) => resp)
+        .then((data) => setGuards(data.data))
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const getCooks = () => {
-    const cooks = [
-      { name: "Alice", age: "16" },
-      { name: "Bob", age: "20" },
-    ];
-
-    setCooks(cooks);
+    try {
+      axios
+        .get("http://localhost:8000/profiles/cooks", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((resp) => resp)
+        .then((data) => setCooks(data.data))
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
