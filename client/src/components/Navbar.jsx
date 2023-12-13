@@ -21,7 +21,7 @@ const Navbar = () => {
         <li>
           <Link to="/profiles">Profiles</Link>
         </li>
-        <li onClick={logout}>Logout</li>
+        <li onClick={logout} style={{ cursor: "pointer" }}>Logout</li>
       </ul>
     </nav>
   );
