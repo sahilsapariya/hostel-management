@@ -185,6 +185,7 @@ const Profiles = () => {
           setAddProfile={setAddProfile}
           setInformation={setInformation}
           setUpdateProfile={setUpdateProfile}
+          setListProfiles={setListProfiles}
         />
       )}
 
@@ -217,7 +218,7 @@ const ProfilesList = ({
   cleaners,
   guards,
   setInformation,
-  setAddProfile
+  setAddProfile,
 }) => {
   return (
     <div className="profiles">
