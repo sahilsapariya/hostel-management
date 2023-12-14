@@ -28,7 +28,7 @@ const Information = () => {
       <div className="operations_buttons">
         <button
           type="button"
-          onClick={() => navigate(`/profiles/students/update/${data?.id}`)}
+          onClick={() => navigate(`/profiles/${category.slice(0, category.length - 1)}/update/${data?.id}`)}
         >
           Edit
         </button>
@@ -44,7 +44,7 @@ const Information = () => {
       </div>
       {category === "students" ? (
         <Student data={data} />
-      ) : category === "cleanes" ? (
+      ) : category === "cleaners" ? (
         <Cleaners data={data} />
       ) : category === "cooks" ? (
         <Cooks data={data} />

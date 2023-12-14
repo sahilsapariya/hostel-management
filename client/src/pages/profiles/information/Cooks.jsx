@@ -7,67 +7,67 @@ const Cooks = ({ data: cook }) => {
         <td>
           <th>Name</th>
         </td>
-        <td>{cook.name}</td>
+        <td>{cook?.name}</td>
       </tr>
       <tr>
         <td>
           <th>Age</th>
         </td>
-        <td>{cook.age}</td>
+        <td>{cook?.age}</td>
       </tr>
       <tr>
         <td>
           <th>Address</th>
         </td>
-        <td>{cook.address}</td>
+        <td>{cook?.address}</td>
       </tr>
       <tr>
         <td>
           <th>Phone number</th>
         </td>
-        <td>{cook.phone}</td>
+        <td>{cook?.phone}</td>
       </tr>
       <tr>
         <td>
           <th>Email</th>
         </td>
-        <td>{cook.email}</td>
+        <td>{cook?.email}</td>
       </tr>
       <tr>
         <td>
           <th>Gender</th>
         </td>
-        <td>{cook.gender}</td>
+        <td>{cook?.gender}</td>
       </tr>
       <tr>
         <td>
           <th>Aadhar number</th>
         </td>
-        <td>{cook.aadhar_number}</td>
+        <td>{cook?.aadhar_number}</td>
       </tr>
       <tr>
         <td>
           <th>Cast</th>
         </td>
-        <td>{cook.cast}</td>
+        <td>{cook?.cast}</td>
       </tr>
       <tr>
         <td>
           <th>Emergency contact number</th>
         </td>
-        <td>{cook.emergency_contact}</td>
+        <td>{cook?.emergency_contact}</td>
       </tr>
       <tr>
         <td>
           <th>Salary</th>
         </td>
-        <td>{cook.salary}</td>
+        <td>{cook?.salary}</td>
       </tr>
       <tr>
         <td>
           <th>Experience</th>
         </td>
-        <td>{cook.experience}</td>
+        <td>{cook?.experience}</td>
       </tr>
     </table>
   );

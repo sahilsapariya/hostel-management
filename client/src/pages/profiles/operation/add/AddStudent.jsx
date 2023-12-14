@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-
-
+import AddProfile from "../../../../hooks/useAdd";
 
 const AddStudent = () => {
   const [name, setName] = useState();
@@ -17,42 +16,29 @@ const AddStudent = () => {
   const [allergies, setAllergies] = useState([]);
   // const [fees, setFees] = useState();
 
-  const AddStudentRecord = () => {
-    const data = {
-      name: name,
-      age: age,
-      address: address,
-      phone: phone,
-      email: email,
-      emergency_contact: emergencyContact,
-      gender: gender,
-      aadhar_number: aadharNumber,
-      cast: cast,
-      hostel_room_number: roomNumber,
-      blood_group: bloodGroup,
-      allergies: allergies,
-      fees_payment_details: [],
-    };
-
-
-    fetch("http://localhost:8000/profiles/student/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(data),
-    })
-      .then((resp) => {
-        
-        // navigate("/profiles");
-      })
-      .catch((err) => console.log(err));
+  const data = {
+    name: name,
+    age: age,
+    address: address,
+    phone: phone,
+    email: email,
+    emergency_contact: emergencyContact,
+    gender: gender,
+    aadhar_number: aadharNumber,
+    cast: cast,
+    hostel_room_number: roomNumber,
+    blood_group: bloodGroup,
+    allergies: allergies,
+    fees_payment_details: [],
   };
 
   return (
-    <form onSubmit={AddStudentRecord}>
+    <form
+      onSubmit={() =>
+        AddProfile("http://localhost:8000/profiles/student/", data)
+      }
+      method="post"
+    >
       <table className="information_table">
         <tr>
           <td>

@@ -1,36 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-const useAdd = (url, data) => {
+const AddProfile = (url, data) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify(data),
-        });
+  const addData = async (url, data) => {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(data),
+      });
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        console.log("profile added successfully");
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    };
+      console.log("profile added successfully");
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchData();
-  }, [url]);
+  addData(url, data);
 
-  return { data, loading, error };
+  return { loading, error };
 };
 
-export default useAdd;
+export default AddProfile;

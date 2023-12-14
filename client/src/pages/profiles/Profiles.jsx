@@ -130,7 +130,7 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
         <h2>{profile}</h2>
       </div>
 
-      <button type="button" onClick={() => {}}>
+      <button type="button" onClick={() => navigate(`/profiles/${profile}/add`)}>
         Add
       </button>
 

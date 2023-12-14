@@ -4,10 +4,10 @@ import AddCleaner from "./AddCleaner";
 import AddCook from "./AddCook";
 import AddGuard from "./AddGuard";
 
-const AddPerson = ({
-  selectedButton: userCategory
-}) => {
-  const category = userCategory;
+import { useParams } from "react-router-dom";
+
+const AddPerson = () => {
+  const { category } = useParams();
 
   return (
     <div className="add__container">
