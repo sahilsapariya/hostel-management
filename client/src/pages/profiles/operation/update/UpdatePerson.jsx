@@ -3,43 +3,21 @@ import UpdateStudent from "./UpdateStudent";
 import UpdateCleaner from "./UpdateCleaner";
 import UpdateCook from "./UpdateCook";
 import UpdateGuard from "./UpdateGuard";
+import { useParams } from "react-router-dom";
+import useFetch from "../../../../hooks/useFetch";
 
-const UpdatePerson = ({
-  profile,
-  selectedButton: userCategory,
-  setAddProfile,
-  setUpdateProfile,
-  setInformation
-}) => {
-  const data = profile;
-  const category = userCategory;
+const UpdatePerson = () => {
+
+  const {category, id} = useParams()
+
+  const { data } = useFetch(`http://127.0.0.1:8000/profiles/${category.slice(0, category.length - 1)}/${id}/`)
 
   return (
     <div className="information__container">
       <div className="profile_header">
-        <h2>"update" + {category.slice(0, category.length - 1)}</h2>
+        <h2>Update {category.slice(0, category.length - 1)}</h2>
       </div>
 
-      <div className="operations_buttons">
-        <button
-          type="button"
-          onClick={() => {
-            setInformation(false);
-            setAddProfile(true);
-          }}
-        >
-          Add
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setInformation(false);
-            setUpdateProfile(true);
-          }}
-        >
-          Edit
-        </button>
-      </div>
 
       {category === "students" ? (
         <UpdateStudent data={data} />

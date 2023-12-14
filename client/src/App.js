@@ -6,6 +6,9 @@ import About from "./pages/About";
 import Profiles from "./pages/profiles/Profiles";
 import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
+import Information from "./pages/profiles/information/Information";
+import AddPerson from "./pages/profiles/operation/add/AddPerson";
+import UpdatePerson from "./pages/profiles/operation/update/UpdatePerson";
 
 function App() {
   return (
@@ -22,6 +25,13 @@ function App() {
             path="/profiles"
             element={<ProtectedRoute element={<Profiles />} />}
           />
+
+          <Route path="/profiles/:category/:id" element={<ProtectedRoute element={<Information />} />}  />
+          <Route path="/profiles/:category/add" element={<ProtectedRoute element={<AddPerson />} />}  />
+          <Route path="/profiles/:category/update/:id" element={<ProtectedRoute element={<UpdatePerson />} />}  />
+
+
+
           <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>

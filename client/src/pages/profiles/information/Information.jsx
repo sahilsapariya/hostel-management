@@ -4,50 +4,21 @@ import Cooks from "./Cooks";
 import Cleaners from "./Cleaners";
 import Guard from "./Guard";
 
+import { useNavigate, useParams } from "react-router-dom";
+import useFetch from "../../../hooks/useFetch";
+import { DeleteProfile } from "../../../hooks/deleteProfile";
 
-const Information = ({
-  profile,
-  selectedButton: userCategory,
-  setAddProfile,
-  setUpdateProfile,
-  setInformation,
-  setListProfiles,
-}) => {
-  const data = profile;
-  const category = userCategory;
+const Information = () => {
+  const { category, id } = useParams();
 
-  const handleDeleteProfile = (id) => {
-    const isConfirm = window.confirm(
-      "Are you sure you want to delete this profile?"
-    );
+  const { data } = useFetch(
+    `http://127.0.0.1:8000/profiles/${category.slice(
+      0,
+      category.length - 1
+    )}/${id}/`
+  );
 
-    if (isConfirm) {
-      fetch(
-        `http://localhost:8000/profiles/${category.slice(
-          0,
-          category.length - 1
-        )}/${id}/`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
-        .then((resp) => resp)
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
-
-      setInformation(false);
-      setListProfiles(true);
-
-      // if (category === "students") getStudents();
-      // else if (category === "cooks") getCooks();
-      // else if (category === "cleaners") getCleaners();
-      // else if (category === "guards") getGuards();
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="information__container">
@@ -57,41 +28,28 @@ const Information = ({
       <div className="operations_buttons">
         <button
           type="button"
-          onClick={() => {
-            setInformation(false);
-            setUpdateProfile(true);
-          }}
+          onClick={() => navigate(`/profiles/students/update/${data?.id}`)}
         >
           Edit
         </button>
-        <button type="button" onClick={() => handleDeleteProfile(data.id)}>
+        <button
+          type="button"
+          onClick={() => {
+            DeleteProfile(category, id);
+            navigate("/profiles");
+          }}
+        >
           Delete
         </button>
       </div>
       {category === "students" ? (
-        <Student
-          data={data}
-          setAddProfile={setAddProfile}
-          setUpdateProfile={setUpdateProfile}
-        />
+        <Student data={data} />
       ) : category === "cleanes" ? (
-        <Cleaners
-          data={data}
-          setAddProfile={setAddProfile}
-          setUpdateProfile={setUpdateProfile}
-        />
+        <Cleaners data={data} />
       ) : category === "cooks" ? (
-        <Cooks
-          data={data}
-          setAddProfile={setAddProfile}
-          setUpdateProfile={setUpdateProfile}
-        />
+        <Cooks data={data} />
       ) : category === "guards" ? (
-        <Guard
-          data={data}
-          setAddProfile={setAddProfile}
-          setUpdateProfile={setUpdateProfile}
-        />
+        <Guard data={data} />
       ) : null}
     </div>
   );

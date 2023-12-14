@@ -1,107 +1,57 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import "../../styles/Profiles.scss";
-import Information from "./information/Information";
-import AddPerson from "./operation/add/AddPerson";
-import UpdatePerson from "./operation/update/UpdatePerson";
+
+import useFetch from "../../hooks/useFetch";
+
+import { useSnapshot } from "valtio";
+import { store } from "../../context/state";
+import { useNavigate } from "react-router-dom";
 
 const Profiles = () => {
+  const snap = useSnapshot(store);
+
   const [profile, setProfile] = useState("students");
   const [selectedButton, setSelectedButton] = useState("students");
 
-  const [students, setStudents] = useState(null);
-  const [guards, setGuards] = useState(null);
-  const [cleaners, setCleaners] = useState(null);
-  const [cooks, setCooks] = useState(null);
+  const students = snap.students;
+  const cooks = snap.cooks;
+  const guards = snap.guards;
+  const cleaners = snap.cleaners;
 
-  const [listProfiles, setListProfiles] = useState(true);
-  const [selectedProfile, setSelectedProfile] = useState(null);
-  const [information, setInformation] = useState(false);
-  const [addProfile, setAddProfile] = useState(false);
-  const [updateProfile, setUpdateProfile] = useState(false);
-
-  const setToList = () => {
-    setListProfiles(true);
-    setSelectedProfile(null);
-    setInformation(false);
-    setAddProfile(false);
-    setUpdateProfile(false);
-  };
-
-  const getStudents = () => {
-    try {
-      axios
-        .get("http://localhost:8000/profiles/students", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((resp) => resp)
-        .then((data) => setStudents(data.data))
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getCleaners = () => {
-    try {
-      axios
-        .get("http://localhost:8000/profiles/cleaners", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((resp) => resp)
-        .then((data) => setCleaners(data.data))
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getGuards = () => {
-    try {
-      axios
-        .get("http://localhost:8000/profiles/guards", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((resp) => resp)
-        .then((data) => setGuards(data.data))
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const getCooks = () => {
-    try {
-      axios
-        .get("http://localhost:8000/profiles/cooks", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        .then((resp) => resp)
-        .then((data) => setCooks(data.data))
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const {
+    data: studentsData,
+    loading: studentLoading,
+    error: studentError,
+  } = useFetch("http://localhost:8000/profiles/students");
+  const {
+    data: cooksData,
+    loading: cooksLoading,
+    error: cooksError,
+  } = useFetch("http://localhost:8000/profiles/cooks");
+  const {
+    data: guardsData,
+    loading: guardsLoading,
+    error: guardsError,
+  } = useFetch("http://localhost:8000/profiles/guards");
+  const {
+    data: cleanersData,
+    loading: cleanersLoading,
+    error: cleanersError,
+  } = useFetch("http://localhost:8000/profiles/cleaners");
 
   useEffect(() => {
-    getStudents();
-    getCleaners();
-    getCooks();
-    getGuards();
-  }, []);
+    store.students = studentsData;
+    store.guards = guardsData;
+    store.cleaners = cleanersData;
+    store.cooks = cooksData;
+  }, [studentsData, cooksData, guardsData, cleanersData]);
+
+  if (studentError || cooksError || cleanersError || guardsError) {
+    return <div>{"error occured: " + studentError}</div>;
+  }
+  if (studentLoading || cooksLoading || guardsLoading || cleanersLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="profile__container">
@@ -112,7 +62,6 @@ const Profiles = () => {
             onClick={() => {
               setProfile("students");
               setSelectedButton("students");
-              setToList();
             }}
             style={{
               borderStyle: selectedButton === "students" ? "solid" : "dashed",
@@ -125,7 +74,6 @@ const Profiles = () => {
             onClick={() => {
               setProfile("cleaners");
               setSelectedButton("cleaners");
-              setToList();
             }}
             style={{
               borderStyle: selectedButton === "cleaners" ? "solid" : "dashed",
@@ -138,7 +86,6 @@ const Profiles = () => {
             onClick={() => {
               setProfile("cooks");
               setSelectedButton("cooks");
-              setToList();
             }}
             style={{
               borderStyle: selectedButton === "cooks" ? "solid" : "dashed",
@@ -151,7 +98,6 @@ const Profiles = () => {
             onClick={() => {
               setProfile("guards");
               setSelectedButton("guards");
-              setToList();
             }}
             style={{
               borderStyle: selectedButton === "guards" ? "solid" : "dashed",
@@ -164,77 +110,29 @@ const Profiles = () => {
 
       <hr />
 
-      {listProfiles && (
-        <ProfilesList
-          profile={profile}
-          students={students}
-          cleaners={cleaners}
-          cooks={cooks}
-          guards={guards}
-          setListProfiles={setListProfiles}
-          setSelectedProfile={setSelectedProfile}
-          setInformation={setInformation}
-          setAddProfile={setAddProfile}
-        />
-      )}
-
-      {information && (
-        <Information
-          profile={selectedProfile}
-          selectedButton={selectedButton}
-          setAddProfile={setAddProfile}
-          setInformation={setInformation}
-          setUpdateProfile={setUpdateProfile}
-          setListProfiles={setListProfiles}
-        />
-      )}
-
-      {addProfile && (
-        <AddPerson
-          selectedButton={selectedButton}
-          setAddProfile={setAddProfile}
-          setInformation={setInformation}
-          setUpdateProfile={setUpdateProfile}
-        />)}
-
-      {updateProfile && (
-        <UpdatePerson
-          profile={selectedProfile}
-          selectedButton={selectedButton}
-          setAddProfile={setAddProfile}
-          setInformation={setInformation}
-          setUpdateProfile={setUpdateProfile}
-        />)}
+      <ProfilesList
+        profile={profile}
+        students={students}
+        cleaners={cleaners}
+        cooks={cooks}
+        guards={guards}
+      />
     </div>
   );
 };
 
-const ProfilesList = ({
-  profile,
-  setSelectedProfile,
-  setListProfiles,
-  students,
-  cooks,
-  cleaners,
-  guards,
-  setInformation,
-  setAddProfile,
-}) => {
+const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="profiles">
       <div className="profile_header">
         <h2>{profile}</h2>
       </div>
 
-      <button
-          type="button"
-          onClick={() => {
-            setListProfiles(false);
-            setAddProfile(true);
-          }}
-        >
-          Add
-        </button>
+      <button type="button" onClick={() => {}}>
+        Add
+      </button>
 
       <ul>
         {profile === "students" &&
@@ -242,11 +140,7 @@ const ProfilesList = ({
             return (
               <li
                 key={index}
-                onClick={() => {
-                  setSelectedProfile(student);
-                  setListProfiles(false);
-                  setInformation(true);
-                }}
+                onClick={() => navigate(`/profiles/students/${student.id}`)}
               >
                 {student.name}
               </li>
@@ -257,11 +151,7 @@ const ProfilesList = ({
             return (
               <li
                 key={index}
-                onClick={() => {
-                  setSelectedProfile(cleaner);
-                  setListProfiles(false);
-                  setInformation(true);
-                }}
+                onClick={() => navigate(`/profiles/cleaners/${cleaner.id}`)}
               >
                 {cleaner.name}
               </li>
@@ -272,11 +162,7 @@ const ProfilesList = ({
             return (
               <li
                 key={index}
-                onClick={() => {
-                  setSelectedProfile(cook);
-                  setListProfiles(false);
-                  setInformation(true);
-                }}
+                onClick={() => navigate(`/profiles/cooks/${cook.id}`)}
               >
                 {cook.name}
               </li>
@@ -287,11 +173,7 @@ const ProfilesList = ({
             return (
               <li
                 key={index}
-                onClick={() => {
-                  setSelectedProfile(guard);
-                  setListProfiles(false);
-                  setInformation(true);
-                }}
+                onClick={() => navigate(`/profiles/guards/${guard.id}`)}
               >
                 {guard.name}
               </li>
