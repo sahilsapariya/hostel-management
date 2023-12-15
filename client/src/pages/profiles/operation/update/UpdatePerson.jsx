@@ -7,25 +7,29 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../../../hooks/useFetch";
 
 const UpdatePerson = () => {
+  const { category, id } = useParams();
 
-  const {category, id} = useParams()
+  const { data, loading, error } = useFetch(
+    `http://127.0.0.1:8000/profiles/${category}/${id}/`
+  );
 
-  const { data } = useFetch(`http://127.0.0.1:8000/profiles/${category.slice(0, category.length - 1)}/${id}/`)
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="information__container">
       <div className="profile_header">
-        <h2>Update {category.slice(0, category.length - 1)}</h2>
+        <h2>Update {category}</h2>
       </div>
 
-
-      {category === "students" ? (
+      {category === "student" ? (
         <UpdateStudent data={data} />
-      ) : category === "cleaners" ? (
+      ) : category === "cleaner" ? (
         <UpdateCleaner data={data} />
-      ) : category === "cooks" ? (
+      ) : category === "cook" ? (
         <UpdateCook data={data} />
-      ) : category === "guards" ? (
+      ) : category === "guard" ? (
         <UpdateGuard data={data} />
       ) : null}
     </div>

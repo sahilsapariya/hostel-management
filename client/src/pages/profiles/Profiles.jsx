@@ -13,10 +13,6 @@ const Profiles = () => {
   const [profile, setProfile] = useState("students");
   const [selectedButton, setSelectedButton] = useState("students");
 
-  const students = snap.students;
-  const cooks = snap.cooks;
-  const guards = snap.guards;
-  const cleaners = snap.cleaners;
 
   const {
     data: studentsData,
@@ -52,6 +48,12 @@ const Profiles = () => {
   if (studentLoading || cooksLoading || guardsLoading || cleanersLoading) {
     return <div>Loading...</div>;
   }
+
+
+  const students = snap.students;
+  const cooks = snap.cooks;
+  const guards = snap.guards;
+  const cleaners = snap.cleaners;
 
   return (
     <div className="profile__container">
