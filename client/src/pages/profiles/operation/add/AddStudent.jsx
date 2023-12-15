@@ -14,7 +14,7 @@ const AddStudent = () => {
   const [roomNumber, setRoomNumber] = useState();
   const [bloodGroup, setBloodGroup] = useState();
   const [allergies, setAllergies] = useState([]);
-  // const [fees, setFees] = useState();
+
 
   const data = {
     name: name,
@@ -34,8 +34,10 @@ const AddStudent = () => {
 
   return (
     <form
-      onSubmit={() =>
+      onSubmit={() =>{
         AddProfile("http://localhost:8000/profiles/student/", data)
+        alert("profile added successfully!")
+      }
       }
       method="post"
     >
@@ -110,7 +112,6 @@ const AddStudent = () => {
             <th>Gender</th>
           </td>
           <td>
-            {/* <input type="text" name='gender' placeholder='Enter ' onChange={(e) => setName(e.target.value)} /> */}
             <select
               id="gender"
               name="gender"
@@ -204,23 +205,7 @@ const AddStudent = () => {
             />
           </td>
         </tr>
-        {/* <tr>
-        <td>
-          <th>Fees payment</th>
-        </td>
-        <td>
-          {student.fees_payment_details?.map((fee, index) => {
-            return (
-              <div key={index}>
-                <li>{fee.date}</li>
-                <li>{fee.amount}</li>
-                <li>{fee.mode}</li>
-                <li>{fee.status}</li> <br />
-              </div>
-            );
-          })}
-        </td>
-      </tr> */}
+        
       </table>
       <button type="submit">Add Student</button>
     </form>

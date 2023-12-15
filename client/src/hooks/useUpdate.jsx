@@ -12,7 +12,6 @@ export const updateData = async (url, data) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    console.log("data updated successfully");
   } catch (error) {
     console.error(error);
   }
