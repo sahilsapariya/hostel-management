@@ -19,6 +19,9 @@ const Navbar = () => {
           <Link to="/about">About</Link>
         </li>
         <li>
+          <Link to="/rooms">Rooms</Link>
+        </li>
+        <li>
           <Link to="/profiles">Profiles</Link>
         </li>
         <li onClick={logout} style={{ cursor: "pointer" }}>Logout</li>

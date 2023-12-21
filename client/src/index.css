@@ -19,3 +19,18 @@ html {
 body {
   overflow-x: hidden;
 }
+
+
+.items_list {
+  ul {
+    width: 90%;
+    margin: 2rem auto;
+    li {
+      margin: 0.5rem 0;
+      padding: 0.2rem 1rem;
+      border-bottom: 1px solid gray;
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+}

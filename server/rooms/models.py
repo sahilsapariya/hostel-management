@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Room(models.Model):
-    room_number = models.IntegerField()
+    room_number = models.IntegerField(unique=True)
     capacity = models.IntegerField()
     rent = models.IntegerField()
     facilities = models.JSONField(default=list)

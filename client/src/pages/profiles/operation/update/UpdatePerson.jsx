@@ -17,6 +17,10 @@ const UpdatePerson = () => {
     return <div>Loading...</div>;
   }
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div className="information__container">
       <div className="profile_header">

@@ -127,7 +127,7 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="profiles">
+    <div className="profiles items_list">
       <div className="profile_header">
         <h2>{profile}</h2>
       </div>
