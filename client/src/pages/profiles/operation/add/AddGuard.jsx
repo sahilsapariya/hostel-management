@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import baseurl from "../../../../config";
 
 const AddGuard = () => {
   const navigate = useNavigate();
@@ -59,7 +60,7 @@ const AddGuard = () => {
 
   return (
     <form
-      onSubmit={() => addData("http://127.0.0.1:8000/profiles/guard/", data)}
+      onSubmit={() => addData(`${baseurl}/profiles/guard/`, data)}
     >
       <table className="information_table">
         <tr>

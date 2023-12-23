@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { updateData } from "../../../../hooks/useUpdate";
+import baseurl from "../../../../config";
 
 const UpdateGuard = ({ data: guard }) => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ const UpdateGuard = ({ data: guard }) => {
   return (
     <form
       onSubmit={() => {
-        updateData(`http://localhost:8000/profiles/guard/${guard.id}/`, data);
+        updateData(`${baseurl}/profiles/guard/${guard.id}/`, data);
         navigate(`/profiles/guards/${guard.id}`);
       }}
       method="post"

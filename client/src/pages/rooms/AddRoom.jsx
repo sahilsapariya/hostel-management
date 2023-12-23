@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import baseurl from "../../config";
 
 const AddRoom = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const AddRoom = () => {
       <div className="page_header">
         <h1>Add Room</h1>
       </div>
-      <form onSubmit={() => addData("http://localhost:8000/rooms/", data)}>
+      <form onSubmit={() => addData(`${baseurl}/rooms/`, data)}>
         <table className="information_table">
           <tr>
             <td>

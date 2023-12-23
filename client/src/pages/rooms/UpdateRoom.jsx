@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { updateData } from "../../hooks/useUpdate";
+import baseurl from "../../config";
 
 const UpdateRoom = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const UpdateRoom = () => {
     data: room,
     loading,
     error,
-  } = useFetch(`http://localhost:8000/rooms/${id}/`);
+  } = useFetch(`${baseurl}/rooms/${id}/`);
 
   const [roomNumber, setRoomNumber] = useState(room?.room_number);
   const [capacity, setCapacity] = useState(room?.capacity);
@@ -65,7 +66,7 @@ const UpdateRoom = () => {
       </div>
       <form
         onSubmit={() => {
-          updateData(`http://localhost:8000/rooms/${id}/`, data);
+          updateData(`${baseurl}/rooms/${id}/`, data);
           navigate(`/rooms/${id}`);
         }}
       >

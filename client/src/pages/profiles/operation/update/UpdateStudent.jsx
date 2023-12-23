@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { updateData } from "../../../../hooks/useUpdate";
+import baseurl from "../../../../config";
 
 const UpdateStudent = ({ data: student }) => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const UpdateStudent = ({ data: student }) => {
     <form
       onSubmit={() => {
         updateData(
-          `http://localhost:8000/profiles/student/${student.id}/`,
+          `${baseurl}/profiles/student/${student.id}/`,
           data
         );
         navigate(`/profiles/students/${student.id}`);

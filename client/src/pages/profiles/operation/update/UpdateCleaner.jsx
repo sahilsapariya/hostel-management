@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { updateData } from "../../../../hooks/useUpdate";
-
+import baseurl from '../../../../config';
 
 const UpdateCleaner = ({ data: cleaner }) => {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const UpdateCleaner = ({ data: cleaner }) => {
     <form
       onSubmit={() => {
         updateData(
-          `http://localhost:8000/profiles/cleaner/${cleaner.id}/`,
+          `${baseurl}/profiles/cleaner/${cleaner.id}/`,
           data
         );
         navigate(`/profiles/cleaners/${cleaner.id}`);

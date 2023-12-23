@@ -6,6 +6,7 @@ import useFetch from "../../hooks/useFetch";
 import { useSnapshot } from "valtio";
 import { store } from "../../context/state";
 import { useNavigate } from "react-router-dom";
+import baseurl from "../../config";
 
 const Profiles = () => {
   const snap = useSnapshot(store);
@@ -18,22 +19,22 @@ const Profiles = () => {
     data: studentsData,
     loading: studentLoading,
     error: studentError,
-  } = useFetch("http://localhost:8000/profiles/students");
+  } = useFetch(`${baseurl}/profiles/students/`);
   const {
     data: cooksData,
     loading: cooksLoading,
     error: cooksError,
-  } = useFetch("http://localhost:8000/profiles/cooks");
+  } = useFetch(`${baseurl}/profiles/cooks/`);
   const {
     data: guardsData,
     loading: guardsLoading,
     error: guardsError,
-  } = useFetch("http://localhost:8000/profiles/guards");
+  } = useFetch(`${baseurl}/profiles/guards/`);
   const {
     data: cleanersData,
     loading: cleanersLoading,
     error: cleanersError,
-  } = useFetch("http://localhost:8000/profiles/cleaners");
+  } = useFetch(`${baseurl}/profiles/cleaners/`);
 
   useEffect(() => {
     store.students = studentsData;

@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { DeleteProfile } from "../../hooks/deleteProfile";
+import baseurl from "../../config";
 
 const Room = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Room = () => {
     data: room,
     loading,
     error,
-  } = useFetch(`http://127.0.0.1:8000/rooms/${id}/`);
+  } = useFetch(`${baseurl}/rooms/${id}/`);
 
   if (error) return <div>Something went wrong : {error}</div>;
 
@@ -31,7 +32,7 @@ const Room = () => {
             <button
               type="button"
               onClick={() => {
-                DeleteProfile(`http://127.0.0.1:8000/rooms/${room.id}/`);
+                DeleteProfile(`${baseurl}/rooms/${room.id}/`);
                 navigate("/rooms");
               }}
             >

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import baseurl from '../../../../config';
 
 
 const AddCook = () => {
@@ -58,7 +59,7 @@ const AddCook = () => {
 
   return (
     <form
-      onSubmit={() => addData("http://127.0.0.1:8000/profiles/cook/", data)}
+      onSubmit={() => addData(`${baseurl}/profiles/cook/`, data)}
     >
       <table className="information_table">
         <tr>

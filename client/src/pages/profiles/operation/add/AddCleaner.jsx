@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import baseurl from '../../../../config';
 
 const AddCleaner = () => {
   const navigate = useNavigate();
@@ -55,7 +56,8 @@ const AddCleaner = () => {
 
   return (
     <form
-      onSubmit={() => addData("http://127.0.0.1:8000/profiles/cleaner/", data)}
+      onSubmit={() => addData(`${baseurl}/profiles/cleaner/`, data)}
+      // method='post'
     >
       <table className="information_table">
         <tr>

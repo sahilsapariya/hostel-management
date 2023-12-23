@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { updateData } from "../../../../hooks/useUpdate";
+import baseurl from "../../../../config";
 
 const UpdateCook = ({ data: cook }) => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const UpdateCook = ({ data: cook }) => {
     <form
       onSubmit={() => {
         updateData(
-          `http://localhost:8000/profiles/cook/${cook.id}/`,
+          `${baseurl}/profiles/cook/${cook.id}/`,
           data
         );
         navigate(`/profiles/cooks/${cook.id}`);

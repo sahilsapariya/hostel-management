@@ -5,12 +5,13 @@ import UpdateCook from "./UpdateCook";
 import UpdateGuard from "./UpdateGuard";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../../hooks/useFetch";
+import baseurl from "../../../../config";
 
 const UpdatePerson = () => {
   const { category, id } = useParams();
 
   const { data, loading, error } = useFetch(
-    `http://127.0.0.1:8000/profiles/${category}/${id}/`
+    `${baseurl}/profiles/${category}/${id}/`
   );
 
   if (loading) {

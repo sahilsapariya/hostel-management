@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import baseurl from "../../../../config";
 // import AddProfile from "../../../../hooks/useAdd";
 
 const AddStudent = () => {
@@ -14,7 +15,6 @@ const AddStudent = () => {
   const [roomNumber, setRoomNumber] = useState();
   const [bloodGroup, setBloodGroup] = useState();
   const [allergies, setAllergies] = useState([]);
-
 
   const data = {
     name: name,
@@ -48,18 +48,16 @@ const AddStudent = () => {
       }
       console.log("profile added successfully");
     } catch (error) {
-      console.log(error)
-    } 
+      console.log(error);
+    }
   };
-
 
   return (
     <form
-      onSubmit={() =>{
-        addData("http://localhost:8000/profiles/student/", data)
-      }
-      }
-      method="post"
+      onSubmit={() => {
+        addData(`${baseurl}/profiles/student/`, data);
+      }}
+      // method="post"
     >
       <table className="information_table">
         <tr>
@@ -225,7 +223,6 @@ const AddStudent = () => {
             />
           </td>
         </tr>
-        
       </table>
       <button type="submit">Add Student</button>
     </form>

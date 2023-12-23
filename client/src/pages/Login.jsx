@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import baseurl from "../config";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const Login = () => {
     e.preventDefault();
 
     await axios
-      .post("http://127.0.0.1:8000/api/token/", formData)
+      .post(`${baseurl}/api/token/`, formData)
       .then((response) => {
         localStorage.setItem("token", response.data.access);
       })
@@ -33,7 +34,7 @@ const Login = () => {
     } else {
       navigate("/login");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div>

@@ -7,12 +7,13 @@ import Guard from "./Guard";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
 import { DeleteProfile } from "../../../hooks/deleteProfile";
+import baseurl from "../../../config";
 
 const Information = () => {
   const { category, id } = useParams();
 
   const { data } = useFetch(
-    `http://127.0.0.1:8000/profiles/${category.slice(
+    `${baseurl}/profiles/${category.slice(
       0,
       category.length - 1
     )}/${id}/`
@@ -35,7 +36,7 @@ const Information = () => {
         <button
           type="button"
           onClick={() => {
-            DeleteProfile(`http://localhost:8000/profiles/${category.slice(0, category.length - 1)}/${data?.id}/`);
+            DeleteProfile(`${baseurl}/profiles/${category.slice(0, category.length - 1)}/${data?.id}/`);
             navigate("/profiles");
           }}
         >

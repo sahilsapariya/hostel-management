@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import baseurl from "../../config";
 
 const Rooms = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Rooms = () => {
     data: rooms,
     loading,
     error,
-  } = useFetch("http://localhost:8000/rooms/");
+  } = useFetch(`${baseurl}/rooms/`);
 
   if (error) return <div>Some thing went wrong : {error}</div>;
 
