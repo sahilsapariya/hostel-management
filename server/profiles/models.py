@@ -1,4 +1,6 @@
 from django.db import models
+from rooms.models import Room
+
 
 # Create your models here.
 
@@ -12,7 +14,8 @@ class Students(models.Model):
     aadhar_number = models.CharField(max_length=100)
     cast = models.CharField(max_length=20)
     emergency_contact = models.CharField(max_length=20)
-    hostel_room_number = models.CharField(max_length=10)
+    hostel_room_number = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True, blank=True, to_field="room_number")
+
     blood_group = models.CharField(max_length=10)
 
     allergies = models.JSONField(default=list) 

@@ -13,8 +13,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 # Create your views here.
 
 class HomeView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         return Response({"message": "Hello, World!"})
@@ -22,8 +22,8 @@ class HomeView(APIView):
 
 class StudentsView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         students = Students.objects.all()
@@ -33,8 +33,8 @@ class StudentsView(APIView):
 
 class StudentView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
         try:
@@ -72,8 +72,8 @@ class StudentView(APIView):
 
 class CleanersView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         cleaners = Cleaners.objects.all()
@@ -83,8 +83,8 @@ class CleanersView(APIView):
 
 class CleanerView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
         try:
@@ -118,8 +118,8 @@ class CleanerView(APIView):
 
 class CooksView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         cooks = Cooks.objects.all()
@@ -129,8 +129,8 @@ class CooksView(APIView):
 
 class CookView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
         try:
@@ -164,8 +164,8 @@ class CookView(APIView):
 
 class GuardsView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         guards = Guards.objects.all()
@@ -175,8 +175,8 @@ class GuardsView(APIView):
 
 class GuardView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
         try:

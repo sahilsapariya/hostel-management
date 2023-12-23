@@ -63,6 +63,24 @@ const Room = () => {
                 <th>Study Tables</th>
                 <td>{room.number_of_study_tables}</td>
               </tr>
+              <tr>
+                <th>Students list</th>
+                <td>
+                  {room.students.length !== 0
+                    ? room.students.map((student, index) => {
+                        return <li key={index}>{student.name}</li>;
+                      })
+                    : "None"}
+                </td>
+              </tr>
+              <tr>
+                <th>Availibility</th>
+                <td>
+                  {room.students.length >= room.capacity
+                    ? "Full"
+                    : room.capacity - room.students.length}
+                </td>
+              </tr>
             </table>
           </div>
         </>

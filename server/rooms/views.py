@@ -11,8 +11,8 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 class RoomsAPIView(APIView):
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         rooms = Room.objects.all()
@@ -27,8 +27,8 @@ class RoomsAPIView(APIView):
 
 
 class RoomAPIView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
         room = Room.objects.filter(pk=pk).first()

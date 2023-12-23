@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddProfile from "../../../../hooks/useAdd";
+// import AddProfile from "../../../../hooks/useAdd";
 
 const AddStudent = () => {
   const [name, setName] = useState();
@@ -32,11 +32,31 @@ const AddStudent = () => {
     fees_payment_details: [],
   };
 
+  const addData = async (url, data) => {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      console.log("profile added successfully");
+    } catch (error) {
+      console.log(error)
+    } 
+  };
+
+
   return (
     <form
       onSubmit={() =>{
-        AddProfile("http://localhost:8000/profiles/student/", data)
-        alert("profile added successfully!")
+        addData("http://localhost:8000/profiles/student/", data)
       }
       }
       method="post"

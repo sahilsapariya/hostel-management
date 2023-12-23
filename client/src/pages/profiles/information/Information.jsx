@@ -35,7 +35,7 @@ const Information = () => {
         <button
           type="button"
           onClick={() => {
-            DeleteProfile(`http://localhost:8000/profiles/${category}/${id}/}`);
+            DeleteProfile(`http://localhost:8000/profiles/${category.slice(0, category.length - 1)}/${data?.id}/`);
             navigate("/profiles");
           }}
         >

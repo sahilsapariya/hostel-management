@@ -122,12 +122,7 @@ const AddRoom = () => {
               />
             </td>
           </tr>
-          <tr>
-            <td>
-              <th>List of accessors</th>
-            </td>
-            <td>comming soon</td>
-          </tr>
+          
         </table>
         <button type="submit">Add Room</button>
       </form>
