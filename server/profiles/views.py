@@ -10,14 +10,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
-# Create your views here.
-
-class HomeView(APIView):
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        return Response({"message": "Hello, World!"})
     
 
 class StudentsView(APIView):

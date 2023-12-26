@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import HomeView
 
 # from rest_framework.authtoken import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
@@ -29,4 +30,6 @@ urlpatterns = [
     path('profiles/', include('profiles.urls')),
     path('rooms/', include('rooms.urls')),
     path('admin/', admin.site.urls),
+
+    path('', HomeView.as_view(), name="home-details")
 ]
