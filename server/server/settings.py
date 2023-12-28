@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'fees',
     'rooms',
     'corsheaders',
+    'inventory'
 ]
 
 MIDDLEWARE = [

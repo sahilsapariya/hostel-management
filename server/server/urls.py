@@ -30,7 +30,7 @@ urlpatterns = [
     path('profiles/', include('profiles.urls')),
     path('rooms/', include('rooms.urls')),
     path('payments/', include('payments.urls')),
+    path('inventory/', include('inventory.urls')),
     path('admin/', admin.site.urls),
-
     path('', HomeView.as_view(), name="home-details")
 ]
