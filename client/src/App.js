@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
 
 // Import components for each route
 import Home from "./pages/Home";
@@ -20,12 +21,28 @@ import Bills from "./pages/bills/Bills";
 import BillInfo from "./pages/bills/BillInfo";
 import AddBill from "./pages/bills/AddBill";
 import UpdateBill from "./pages/bills/UpdateBill";
+import Sidebar from "./components/Sidebar";
 
 function App() {
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
+
+  const [activeMenu, setActiveMenu] = useState(document.querySelector(".active")?.innerHTML);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        {/* {() => localStorage.getItem("token") && <Navbar />} */}
+        <Sidebar
+          isSidebarActive={isSidebarActive}
+          setIsSidebarActive={setIsSidebarActive}
+          setActiveMenu={setActiveMenu}
+        />
+
+        <Navbar
+          setIsSidebarActive={setIsSidebarActive}
+          activeMenu={activeMenu}
+        />
+
         <Routes>
           <Route path="/" element={<ProtectedRoute element={<Home />} />} />
           <Route

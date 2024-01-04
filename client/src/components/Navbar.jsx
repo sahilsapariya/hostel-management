@@ -1,34 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
 import "../styles/Components.scss";
+import menuIcon from '../assets/menu_icon.png'
 
-const Navbar = () => {
-  const logout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
+const Navbar = ({ setIsSidebarActive, activeMenu }) => {
+
 
   return (
     <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/rooms">Rooms</Link>
-        </li>
-        <li>
-          <Link to="/inventory">Inventory</Link>
-        </li>
-        <li>
-          <Link to="/bills">Bills</Link>
-        </li>
-        <li>
-          <Link to="/profiles">Profiles</Link>
-        </li>
-        <li onClick={logout} style={{ cursor: "pointer" }}>Logout</li>
-      </ul>
+      <div className="icon">
+        <img src={menuIcon} onClick={() => setIsSidebarActive(true)} alt="menu" />
+      </div>
+
+      <span id="active_menu">{activeMenu}</span>
     </nav>
   );
 };
