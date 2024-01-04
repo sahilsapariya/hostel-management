@@ -16,6 +16,10 @@ import UpdateRoom from "./pages/rooms/UpdateRoom";
 import AddItem from "./pages/inventory/AddItem";
 import UpdateItems from "./pages/inventory/UpdateItems";
 import ItemInfo from "./pages/inventory/ItemInfo";
+import Bills from "./pages/bills/Bills";
+import BillInfo from "./pages/bills/BillInfo";
+import AddBill from "./pages/bills/AddBill";
+import UpdateBill from "./pages/bills/UpdateBill";
 
 function App() {
   return (
@@ -39,6 +43,23 @@ function App() {
           <Route
             path="/inventory/information/:id"
             element={<ProtectedRoute element={<ItemInfo />} />}
+          />
+
+          <Route
+            path="/bills"
+            element={<ProtectedRoute element={<Bills />} />}
+          />
+          <Route
+            path="/bill/add"
+            element={<ProtectedRoute element={<AddBill />} />}
+          />
+          <Route
+            path="/bill/update/:id"
+            element={<ProtectedRoute element={<UpdateBill />} />}
+          />
+          <Route
+            path="/bill/information/:id"
+            element={<ProtectedRoute element={<BillInfo />} />}
           />
 
           <Route
