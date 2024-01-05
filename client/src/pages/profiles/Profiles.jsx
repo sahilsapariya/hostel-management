@@ -14,7 +14,6 @@ const Profiles = () => {
   const [profile, setProfile] = useState("students");
   const [selectedButton, setSelectedButton] = useState("students");
 
-
   const {
     data: studentsData,
     loading: studentLoading,
@@ -50,7 +49,6 @@ const Profiles = () => {
     return <div>Loading...</div>;
   }
 
-
   const students = snap.students;
   const cooks = snap.cooks;
   const guards = snap.guards;
@@ -58,6 +56,8 @@ const Profiles = () => {
 
   return (
     <div className="profile__container">
+      <h2>Profiles</h2>
+
       <div className="profile_selector__container">
         <div className="profiles_options">
           <button
@@ -67,7 +67,10 @@ const Profiles = () => {
               setSelectedButton("students");
             }}
             style={{
-              borderStyle: selectedButton === "students" ? "solid" : "dashed",
+              border:
+                selectedButton === "students" ? "solid #404040 1px" : "none",
+              background: selectedButton === "students" ? "#2D2D2D" : "#D9D9D9",
+              color: selectedButton === "students" ? "white" : "black",
             }}
           >
             Students
@@ -79,7 +82,10 @@ const Profiles = () => {
               setSelectedButton("cleaners");
             }}
             style={{
-              borderStyle: selectedButton === "cleaners" ? "solid" : "dashed",
+              border:
+                selectedButton === "cleaners" ? "solid #404040 1px" : "none",
+              background: selectedButton === "cleaners" ? "#2D2D2D" : "#D9D9D9",
+              color: selectedButton === "cleaners" ? "white" : "black",
             }}
           >
             Cleaners
@@ -91,7 +97,9 @@ const Profiles = () => {
               setSelectedButton("cooks");
             }}
             style={{
-              borderStyle: selectedButton === "cooks" ? "solid" : "dashed",
+              border: selectedButton === "cooks" ? "solid #404040 1px" : "none",
+              background: selectedButton === "cooks" ? "#2D2D2D" : "#D9D9D9",
+              color: selectedButton === "cooks" ? "white" : "black",
             }}
           >
             Cooks
@@ -103,7 +111,10 @@ const Profiles = () => {
               setSelectedButton("guards");
             }}
             style={{
-              borderStyle: selectedButton === "guards" ? "solid" : "dashed",
+              border:
+                selectedButton === "guards" ? "solid #404040 1px" : "none",
+              background: selectedButton === "guards" ? "#2D2D2D" : "#D9D9D9",
+              color: selectedButton === "guards" ? "white" : "black",
             }}
           >
             Guards
@@ -128,61 +139,77 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="profiles items_list">
+    <div className="profiles">
       <div className="profile_header">
-        <h2>{profile}</h2>
+        <h1>{profile}</h1>
       </div>
 
-      <button type="button" onClick={() => navigate(`/profiles/${profile}/add`)}>
+      {/* <button
+        type="button"
+        onClick={() => navigate(`/profiles/${profile}/add`)}
+      >
         Add
-      </button>
+      </button> */}
 
-      <ul>
-        {profile === "students" &&
-          students?.map((student, index) => {
-            return (
-              <li
-                key={index}
-                onClick={() => navigate(`/profiles/students/${student.id}`)}
-              >
-                {student.name}
-              </li>
-            );
-          })}
-        {profile === "cleaners" &&
-          cleaners?.map((cleaner, index) => {
-            return (
-              <li
-                key={index}
-                onClick={() => navigate(`/profiles/cleaners/${cleaner.id}`)}
-              >
-                {cleaner.name}
-              </li>
-            );
-          })}
-        {profile === "cooks" &&
-          cooks?.map((cook, index) => {
-            return (
-              <li
-                key={index}
-                onClick={() => navigate(`/profiles/cooks/${cook.id}`)}
-              >
-                {cook.name}
-              </li>
-            );
-          })}
-        {profile === "guards" &&
-          guards?.map((guard, index) => {
-            return (
-              <li
-                key={index}
-                onClick={() => navigate(`/profiles/guards/${guard.id}`)}
-              >
-                {guard.name}
-              </li>
-            );
-          })}
-      </ul>
+      <table className="table__container">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {profile === "students" &&
+            students?.map((student, index) => {
+              return (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td
+                    onClick={() => navigate(`/profiles/students/${student.id}`)}
+                  >
+                    {student.name}
+                  </td>
+                </tr>
+              );
+            })}
+          {profile === "cleaners" &&
+            cleaners?.map((cleaner, index) => {
+              return (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td
+                    onClick={() => navigate(`/profiles/cleaners/${cleaner.id}`)}
+                  >
+                    {cleaner.name}
+                  </td>
+                </tr>
+              );
+            })}
+          {profile === "guards" &&
+            guards?.map((guard, index) => {
+              return (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td onClick={() => navigate(`/profiles/guards/${guard.id}`)}>
+                    {guard.name}
+                  </td>
+                </tr>
+              );
+            })}
+          {profile === "cooks" &&
+            cooks?.map((cook, index) => {
+              return (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td onClick={() => navigate(`/profiles/cooks/${cook.id}`)}>
+                    {cook.name}
+                  </td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </div>
   );
 };

@@ -1,34 +1,93 @@
 .profile__container {
   width: 100%;
-  height: calc(100vh - 4rem);
+  flex: 1;
+  .profile_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    h1 {
+      text-align: center;
+      border: solid white 2px;
+      text-transform: capitalize;
+      padding: 5px 2rem;
+      width: fit-content;
+      border-radius: 5px;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin: 1rem 0 0 0;
+  }
 
   .profile_selector__container {
     width: 100%;
     height: fit-content;
-    margin-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 1rem;
 
     .profiles_options {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       padding: 1rem;
-      border: 2px solid rgb(255, 102, 0);
       border-radius: 0.5rem;
 
       button {
-        background-color: white;
+        flex: 1 0 40%;
+        box-sizing: border-box;
+        max-width: 12rem;
+        background-color: #d9d9d9;
+        color: black;
         border: none;
-        margin: 0 1rem;
+        margin: 0.4rem;
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
-        border: 2px dashed #d2660d;
         font-family: inherit;
         font-size: inherit;
         cursor: pointer;
       }
     }
   }
+}
 
+.table__container {
+  width: 90%;
+  margin: 0 auto;
+  // border-radius: 5px;
+  // overflow: hidden;
+  border-collapse: collapse;
+  border: solid #404040 1px;
+
+  tr:first-child th:first-child {
+    border-radius: 5px 0 0 0;
+    overflow: hidden;
+  }
+  tr:first-child th:nth-child(2) {
+    border-radius: 0 5px 0 0;
+    overflow: hidden;
+  }
+
+  tr,
+  td,
+  th {
+    border: solid #404040 1px;
+    padding: 5px 0;
+  }
+  tr td:nth-child(1) {
+    text-align: center;
+  }
+  tr td:nth-child(2) {
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  thead {
+    background: #303030;
+    border: solid #404040 1px;
+  }
 }
