@@ -1,7 +1,8 @@
 .profile__container,
 .information__container,
 .bill__container,
-.inventory__container {
+.inventory__container,
+.room__container {
   width: 100%;
   flex: 1;
 
@@ -139,6 +140,9 @@
     text-align: left;
     padding-left: 10px;
   }
+  tr td:nth-child(3) {
+    text-align: center;
+  }
 
   thead {
     background: #303030;
@@ -192,4 +196,41 @@
   }
 }
 
-// Add profile
+// filter section
+.filter_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem;
+  margin: 1rem 0;
+  border-top: solid #404040 1px;
+  padding-top: 1rem;
+
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    min-width: 300px;
+    max-width: 33%;
+
+    .input {
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        color: black;
+      }
+    }
+  }
+
+  .buttons button {
+    color: black;
+    border: solid #404040 1px;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin: 0 0.5rem;
+    cursor: pointer;
+  }
+}

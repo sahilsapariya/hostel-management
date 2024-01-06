@@ -8,11 +8,7 @@ const UpdateRoom = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const {
-    data: room,
-    loading,
-    error,
-  } = useFetch(`${baseurl}/rooms/${id}/`);
+  const { data: room, loading, error } = useFetch(`${baseurl}/rooms/${id}/`);
 
   const [roomNumber, setRoomNumber] = useState(room?.room_number);
   const [capacity, setCapacity] = useState(room?.capacity);
@@ -60,8 +56,8 @@ const UpdateRoom = () => {
   if (error) return <div>Something went wrong : {error}</div>;
 
   return (
-    <>
-      <div className="page_header">
+    <div className="bill__container">
+      <div className="profile_header">
         <h1>Update Room</h1>
       </div>
       <form
@@ -71,107 +67,110 @@ const UpdateRoom = () => {
         }}
       >
         <table className="information_table">
-          <tr>
-            <td>
+          <colgroup>
+            <col style={{ width: "40%" }} />
+            <col style={{ width: "60%" }} />
+          </colgroup>
+
+          <tbody>
+            <tr>
+              <th>Fields</th>
+              <th>Values</th>
+            </tr>
+            <tr>
               <th>Room Number</th>
-            </td>
-            <td>
-              <input
-                type="number"
-                name="room number"
-                placeholder="Enter room number"
-                value={roomNumber}
-                onChange={(e) => setRoomNumber(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
+              <td>
+                <input
+                  type="number"
+                  name="room number"
+                  placeholder="Enter room number"
+                  value={roomNumber}
+                  onChange={(e) => setRoomNumber(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
               <th>Capicity</th>
-            </td>
-            <td>
-              <input
-                type="number"
-                name="capicity"
-                placeholder="Enter capicity"
-                value={capacity}
-                onChange={(e) => setCapacity(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
+              <td>
+                <input
+                  type="number"
+                  name="capicity"
+                  placeholder="Enter capicity"
+                  value={capacity}
+                  onChange={(e) => setCapacity(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
               <th>Rent</th>
-            </td>
-            <td>
-              <input
-                type="number"
-                name="rent"
-                placeholder="Enter rent"
-                value={rent}
-                onChange={(e) => setRent(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
+              <td>
+                <input
+                  type="number"
+                  name="rent"
+                  placeholder="Enter rent"
+                  value={rent}
+                  onChange={(e) => setRent(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
               <th>No of Study Tables</th>
-            </td>
-            <td>
-              <input
-                type="number"
-                name="number of Study Tables"
-                placeholder="Enter number of Study Tables"
-                value={studyTables}
-                onChange={(e) => setStudyTables(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
+              <td>
+                <input
+                  type="number"
+                  name="number of Study Tables"
+                  placeholder="Enter number of Study Tables"
+                  value={studyTables}
+                  onChange={(e) => setStudyTables(e.target.value)}
+                />
+              </td>
+            </tr>
+            <tr>
               <th>Facilities</th>
-            </td>
-            <td>
-              <CheckBoxGroup
-                handleCheckboxChange={handleCheckboxChange}
-                checkboxes={checkboxes}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>
+              <td>
+                <CheckBoxGroup
+                  handleCheckboxChange={handleCheckboxChange}
+                  checkboxes={checkboxes}
+                />
+              </td>
+            </tr>
+            <tr>
               <th>List of accessors</th>
-            </td>
-            <td>comming soon</td>
-          </tr>
+              <td>comming soon</td>
+            </tr>
+          </tbody>
         </table>
         <button type="submit">Update Room</button>
       </form>
-    </>
+    </div>
   );
 };
 
 const CheckBoxGroup = ({ checkboxes, handleCheckboxChange }) => {
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={checkboxes.ac}
-          onChange={() => handleCheckboxChange("ac")}
-        />
-        AC
-      </label>
-
-      <label>
-        <input
-          type="checkbox"
-          checked={checkboxes.fridge}
-          onChange={() => handleCheckboxChange("fridge")}
-        />
-        Refrigerator
-      </label>
-    </div>
+    <>
+      <input
+        type="checkbox"
+        checked={checkboxes.ac}
+        onChange={() => handleCheckboxChange("ac")}
+        style={{
+          width: "fit-content",
+          marginRight: "1rem",
+        }}
+      />
+      AC
+      <br />
+      <input
+        type="checkbox"
+        checked={checkboxes.fridge}
+        onChange={() => handleCheckboxChange("fridge")}
+        style={{
+          width: "fit-content",
+          marginRight: "1rem",
+        }}
+      />
+      Refrigerator
+    </>
   );
 };
 
