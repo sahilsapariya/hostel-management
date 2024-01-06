@@ -187,7 +187,7 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
           {profile === "students" &&
             students?.map((student, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td
                     onClick={() => navigate(`/profiles/students/${student.id}`)}
@@ -200,7 +200,7 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
           {profile === "cleaners" &&
             cleaners?.map((cleaner, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td
                     onClick={() => navigate(`/profiles/cleaners/${cleaner.id}`)}
@@ -213,7 +213,7 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
           {profile === "guards" &&
             guards?.map((guard, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td onClick={() => navigate(`/profiles/guards/${guard.id}`)}>
                     {guard.name}
@@ -224,7 +224,7 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
           {profile === "cooks" &&
             cooks?.map((cook, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td onClick={() => navigate(`/profiles/cooks/${cook.id}`)}>
                     {cook.name}

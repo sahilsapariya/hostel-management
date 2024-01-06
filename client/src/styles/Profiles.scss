@@ -1,6 +1,8 @@
-.profile__container {
+.profile__container,
+.information__container {
   width: 100%;
   flex: 1;
+
   .profile_header {
     display: flex;
     justify-content: center;
@@ -21,8 +23,36 @@
     }
     img {
       position: absolute;
-      right: max(5%, calc(100% - 900px)/2);
+      right: max(5%, calc(100% - 900px) / 2);
       cursor: pointer;
+    }
+  }
+
+  .information_header {
+    margin: 0 auto;
+    width: calc(100% - 2rem);
+    max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: solid #404040 1px;
+
+    .profile_name {
+      font-size: 1.3rem;
+      text-transform: capitalize;
+      align-items: center;
+      display: flex;
+    }
+    .icons {
+      display: flex;
+      width: 6rem;
+      justify-content: space-evenly;
+
+      img {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
     }
   }
 
@@ -70,15 +100,6 @@
   border-collapse: collapse;
   border: solid #404040 1px;
 
-  // tr:first-child th:first-child {
-  //   border-radius: 5px 0 0 0;
-  //   overflow: hidden;
-  // }
-  // tr:first-child th:nth-child(2) {
-  //   border-radius: 0 5px 0 0;
-  //   overflow: hidden;
-  // }
-
   tr,
   td,
   th {
@@ -102,5 +123,39 @@
   thead {
     background: #303030;
     border: solid #404040 1px;
+  }
+}
+
+.information_table {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  border-collapse: collapse;
+  border: solid #404040 1px;
+
+  tr,
+  td,
+  th {
+    border: solid #404040 1px;
+    padding: 10px 0;
+  }
+  tr:first-child {
+    td {
+      text-align: center;
+    }
+    th {
+      background-color: #303030;
+      text-align: center;
+      font-size: large;
+    }
+  }
+  tr th {
+    background-color: #1b1b1b;
+  }
+  tr th,
+  tr td {
+    text-align: left;
+    padding-left: 1rem;
   }
 }
