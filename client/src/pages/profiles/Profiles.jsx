@@ -8,6 +8,9 @@ import { store } from "../../context/state";
 import { useNavigate } from "react-router-dom";
 import baseurl from "../../config";
 
+import AddIcon from "../../assets/icons/addnormal.svg";
+import AddIconHover from "../../assets/icons/add.svg";
+
 const Profiles = () => {
   const snap = useSnapshot(store);
 
@@ -138,10 +141,31 @@ const Profiles = () => {
 const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
   const navigate = useNavigate();
 
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
+  const iconSource = isHovered ? AddIconHover : AddIcon;
+
   return (
     <div className="profiles">
       <div className="profile_header">
         <h1>{profile}</h1>
+
+        <img
+          src={iconSource}
+          alt={`add ${profile}`}
+          title={`Add ${profile}`}
+          onClick={() => navigate(`/profiles/${profile}/add`)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
       </div>
 
       {/* <button
