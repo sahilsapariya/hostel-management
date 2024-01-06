@@ -39,7 +39,7 @@ const Cleaners = ({ data: cleaner }) => {
             src={EditIconSource}
             alt={`edit students`}
             title={`Edit students`}
-            onClick={() => navigate(`/profiles/student/update/${cleaner?.id}`)}
+            onClick={() => navigate(`/profiles/cleaner/update/${cleaner?.id}`)}
             onMouseEnter={handleEMouseEnter}
             onMouseLeave={handleEMouseLeave}
           />
@@ -48,7 +48,7 @@ const Cleaners = ({ data: cleaner }) => {
             alt={`delete students`}
             title={`Delete students`}
             onClick={() => {
-              DeleteProfile(`/profiles/student/${cleaner?.id}/`);
+              DeleteProfile(`/profiles/cleaner/${cleaner?.id}/`);
               navigate("/profiles/");
             }}
             onMouseEnter={handleDMouseEnter}

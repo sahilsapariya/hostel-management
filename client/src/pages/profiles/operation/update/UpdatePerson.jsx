@@ -25,7 +25,7 @@ const UpdatePerson = () => {
   return (
     <div className="information__container">
       <div className="profile_header">
-        <h2>Update {category}</h2>
+        <h1>Update {category}</h1>
       </div>
 
       {category === "student" ? (

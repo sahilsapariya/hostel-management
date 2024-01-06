@@ -37,7 +37,7 @@ const Cooks = ({ data: cook }) => {
             src={EditIconSource}
             alt={`edit students`}
             title={`Edit students`}
-            onClick={() => navigate(`/profiles/student/update/${cook?.id}`)}
+            onClick={() => navigate(`/profiles/cook/update/${cook?.id}`)}
             onMouseEnter={handleEMouseEnter}
             onMouseLeave={handleEMouseLeave}
           />
@@ -46,7 +46,7 @@ const Cooks = ({ data: cook }) => {
             alt={`delete students`}
             title={`Delete students`}
             onClick={() => {
-              DeleteProfile(`/profiles/student/${cook?.id}/`);
+              DeleteProfile(`/profiles/cook/${cook?.id}/`);
               navigate("/profiles/");
             }}
             onMouseEnter={handleDMouseEnter}

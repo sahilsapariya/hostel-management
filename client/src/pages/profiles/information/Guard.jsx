@@ -37,7 +37,7 @@ const Guard = ({ data: guard }) => {
             src={EditIconSource}
             alt={`edit students`}
             title={`Edit students`}
-            onClick={() => navigate(`/profiles/student/update/${guard?.id}`)}
+            onClick={() => navigate(`/profiles/guard/update/${guard?.id}`)}
             onMouseEnter={handleEMouseEnter}
             onMouseLeave={handleEMouseLeave}
           />
@@ -46,7 +46,7 @@ const Guard = ({ data: guard }) => {
             alt={`delete students`}
             title={`Delete students`}
             onClick={() => {
-              DeleteProfile(`/profiles/student/${guard?.id}/`);
+              DeleteProfile(`/profiles/guard/${guard?.id}/`);
               navigate("/profiles/");
             }}
             onMouseEnter={handleDMouseEnter}
