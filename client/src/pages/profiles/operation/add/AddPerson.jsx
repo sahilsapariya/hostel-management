@@ -4,15 +4,17 @@ import AddCleaner from "./AddCleaner";
 import AddCook from "./AddCook";
 import AddGuard from "./AddGuard";
 
+import "../../../../styles/Profiles.scss";
+
 import { useParams } from "react-router-dom";
 
 const AddPerson = () => {
   const { category } = useParams();
 
   return (
-    <div className="add__container">
+    <div className="information__container">
       <div className="profile_header">
-        <h2>{"add " + category.slice(0, category.length - 1)}</h2>
+        <h1>{"add " + category.slice(0, category.length - 1)}</h1>
       </div>
 
       {category === "students" ? (

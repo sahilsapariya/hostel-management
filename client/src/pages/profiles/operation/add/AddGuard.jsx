@@ -59,181 +59,164 @@ const AddGuard = () => {
   };
 
   return (
-    <form
-      onSubmit={() => addData(`${baseurl}/profiles/guard/`, data)}
-    >
+    <form onSubmit={() => addData(`${baseurl}/profiles/guard/`, data)}>
       <table className="information_table">
-        <tr>
-          <td>
+        <colgroup>
+          <col style={{ width: "40%" }} />
+          <col style={{ width: "60%" }} />
+        </colgroup>
+
+        <tbody>
+          <tr>
+            <th>Fields</th>
+            <th>Values</th>
+          </tr>
+          <tr>
             <th>Name</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="name"
-              placeholder="Enter full name"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter full name"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Age</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="age"
-              placeholder="Enter age"
-              onChange={(e) => setAge(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="age"
+                placeholder="Enter age"
+                onChange={(e) => setAge(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Address</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="address"
-              placeholder="Enter address"
-              onChange={(e) => setAddress(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="address"
+                placeholder="Enter address"
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Phone number</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="phone_number"
-              placeholder="Enter phone number"
-              onChange={(e) => setPhone(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="phone_number"
+                placeholder="Enter phone number"
+                onChange={(e) => setPhone(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Email</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="email"
-              placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="email"
+                placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Gender</th>
-          </td>
-          <td>
-            <select
-              id="gender"
-              name="gender"
-              onChange={(e) => setGender(e.target.value)}
-            >
-              <option value="">Select</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <select
+                id="gender"
+                name="gender"
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
             <th>Aadhar number</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="aadhar number"
-              placeholder="Enter Aadhar number"
-              onChange={(e) => setAadharNumber(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="aadhar number"
+                placeholder="Enter Aadhar number"
+                onChange={(e) => setAadharNumber(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Cast</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="cast"
-              placeholder="Enter cast"
-              onChange={(e) => setCast(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="cast"
+                placeholder="Enter cast"
+                onChange={(e) => setCast(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Emergency contact number</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="emergency contact number"
-              placeholder="Enter emergency contact number"
-              onChange={(e) => setEmergencyContact(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="emergency contact number"
+                placeholder="Enter emergency contact number"
+                onChange={(e) => setEmergencyContact(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Salary</th>
-          </td>
-          <td>
-            <input
-              type="number"
-              name="salary"
-              placeholder="Enter salary"
-              onChange={(e) => setSalary(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="number"
+                name="salary"
+                placeholder="Enter salary"
+                onChange={(e) => setSalary(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Experience</th>
-          </td>
-          <td>
-            <input
-              type="text"
-              name="experience"
-              placeholder="Enter experience"
-              onChange={(e) => setExperience(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="text"
+                name="experience"
+                placeholder="Enter experience"
+                onChange={(e) => setExperience(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Shift start</th>
-          </td>
-          <td>
-            <input
-              type="time"
-              name="shift start"
-              onChange={(e) => setShiftStart(e.target.value)}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
+            <td>
+              <input
+                type="time"
+                name="shift start"
+                onChange={(e) => setShiftStart(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
             <th>Shift end</th>
-          </td>
-          <td>
-            <input
-              type="time"
-              name="shift end"
-              onChange={(e) => setShiftEnd(e.target.value)}
-            />
-          </td>
-        </tr>
+            <td>
+              <input
+                type="time"
+                name="shift end"
+                onChange={(e) => setShiftEnd(e.target.value)}
+              />
+            </td>
+          </tr>
+        </tbody>
       </table>
       <button type="submit">Add Guard</button>
     </form>

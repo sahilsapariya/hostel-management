@@ -176,6 +176,10 @@ const ProfilesList = ({ profile, students, cooks, cleaners, guards }) => {
       </button> */}
 
       <table className="table__container">
+      <colgroup>
+          <col style={{ width: "50px" }} />
+          <col style={{ width: "calc(100% - 50px)" }} />
+        </colgroup>
         <thead>
           <tr>
             <th></th>
