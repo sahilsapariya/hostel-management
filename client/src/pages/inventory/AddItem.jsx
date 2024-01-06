@@ -27,7 +27,6 @@ const AddItem = () => {
     }));
   };
 
-
   const addData = async (url, data) => {
     try {
       const response = await fetch(url, {
@@ -50,17 +49,24 @@ const AddItem = () => {
   };
 
   return (
-    <>
-      <div className="page_header">
+    <div className="inventory__container">
+      <div className="profile_header">
         <h1>Add Item</h1>
       </div>
       <form onSubmit={() => addData(`${baseurl}/inventory/`, itemData)}>
         <table className="information_table">
+          <colgroup>
+            <col style={{ width: "40%" }} />
+            <col style={{ width: "60%" }} />
+          </colgroup>
+
           <tbody>
             <tr>
-              <td>
-                <th>Item name</th>
-              </td>
+              <th>Fields</th>
+              <th>Values</th>
+            </tr>
+            <tr>
+              <th>Item name</th>
               <td>
                 <input
                   type="text"
@@ -71,9 +77,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Category</th>
-              </td>
+              <th>Category</th>
               <td>
                 <input
                   type="text"
@@ -84,9 +88,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Quantity</th>
-              </td>
+              <th>Quantity</th>
               <td>
                 <input
                   type="number"
@@ -97,9 +99,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Unit</th>
-              </td>
+              <th>Unit</th>
               <td>
                 <input
                   type="text"
@@ -110,9 +110,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Purchase Price</th>
-              </td>
+              <th>Purchase Price</th>
               <td>
                 <input
                   type="number"
@@ -123,9 +121,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Purchase Date</th>
-              </td>
+              <th>Purchase Date</th>
               <td>
                 <input
                   type="date"
@@ -136,9 +132,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Vendor Name</th>
-              </td>
+              <th>Vendor Name</th>
               <td>
                 <input
                   type="text"
@@ -149,9 +143,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Vendor Phone Number</th>
-              </td>
+              <th>Vendor Phone Number</th>
               <td>
                 <input
                   type="tel"
@@ -162,9 +154,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Minimum Stock</th>
-              </td>
+              <th>Minimum Stock</th>
               <td>
                 <input
                   type="number"
@@ -175,9 +165,7 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Status</th>
-              </td>
+              <th>Status</th>
               <td>
                 <input
                   type="text"
@@ -188,12 +176,12 @@ const AddItem = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Notes</th>
-              </td>
+              <th>Notes</th>
               <td>
                 <textarea
                   name="notes"
+                  cols={30}
+                  rows={4}
                   value={itemData.notes}
                   onChange={handleChange}
                 />
@@ -201,9 +189,9 @@ const AddItem = () => {
             </tr>
           </tbody>
         </table>
-        <button type="submit">Add Item</button>
+        <button type="submit">Save detail</button>
       </form>
-    </>
+    </div>
   );
 };
 

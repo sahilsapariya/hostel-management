@@ -45,9 +45,9 @@ const UpdateItems = () => {
   if (error) return <div>Something went wrong : {error}</div>;
 
   return (
-    <>
-      <div className="page_header">
-        <h1>Update Room</h1>
+    <div className="inventory__container">
+      <div className="profile_header">
+        <h1>Update Item</h1>
       </div>
       <form
         onSubmit={() => {
@@ -56,11 +56,18 @@ const UpdateItems = () => {
         }}
       >
         <table className="information_table">
+          <colgroup>
+            <col style={{ width: "40%" }} />
+            <col style={{ width: "60%" }} />
+          </colgroup>
+
           <tbody>
             <tr>
-              <td>
-                <th>Item name</th>
-              </td>
+              <th>Fields</th>
+              <th>Values</th>
+            </tr>
+            <tr>
+              <th>Item name</th>
               <td>
                 <input
                   type="text"
@@ -71,9 +78,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Category</th>
-              </td>
+              <th>Category</th>
               <td>
                 <input
                   type="text"
@@ -84,9 +89,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Quantity</th>
-              </td>
+              <th>Quantity</th>
               <td>
                 <input
                   type="number"
@@ -97,9 +100,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Unit</th>
-              </td>
+              <th>Unit</th>
               <td>
                 <input
                   type="text"
@@ -110,9 +111,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Purchase Price</th>
-              </td>
+              <th>Purchase Price</th>
               <td>
                 <input
                   type="number"
@@ -123,9 +122,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Purchase Date</th>
-              </td>
+              <th>Purchase Date</th>
               <td>
                 <input
                   type="date"
@@ -136,9 +133,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Vendor Name</th>
-              </td>
+              <th>Vendor Name</th>
               <td>
                 <input
                   type="text"
@@ -149,9 +144,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Vendor Phone Number</th>
-              </td>
+              <th>Vendor Phone Number</th>
               <td>
                 <input
                   type="tel"
@@ -162,9 +155,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Minimum Stock</th>
-              </td>
+              <th>Minimum Stock</th>
               <td>
                 <input
                   type="number"
@@ -175,9 +166,7 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Status</th>
-              </td>
+              <th>Status</th>
               <td>
                 <input
                   type="text"
@@ -188,12 +177,12 @@ const UpdateItems = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Notes</th>
-              </td>
+              <th>Notes</th>
               <td>
                 <textarea
                   name="notes"
+                  rows={4}
+                  cols={30}
                   value={itemData?.notes}
                   onChange={handleChange}
                 />
@@ -203,7 +192,7 @@ const UpdateItems = () => {
         </table>
         <button type="submit">Update Item</button>
       </form>
-    </>
+    </div>
   );
 };
 

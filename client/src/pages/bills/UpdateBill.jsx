@@ -50,8 +50,8 @@ const UpdateBill = () => {
   if (error) return <div>Something went wrong : {error}</div>;
 
   return (
-    <>
-      <div className="page_header">
+    <div className="bill__container">
+      <div className="profile_header">
         <h1>Update Bill</h1>
       </div>
       <form
@@ -61,11 +61,18 @@ const UpdateBill = () => {
         }}
       >
         <table className="information_table">
+          <colgroup>
+            <col style={{ width: "40%" }} />
+            <col style={{ width: "60%" }} />
+          </colgroup>
+
           <tbody>
             <tr>
-              <td>
-                <th>Bill category</th>
-              </td>
+              <th>Fields</th>
+              <th>Values</th>
+            </tr>
+            <tr>
+              <th>Bill category</th>
               <td>
                 <input
                   type="text"
@@ -76,9 +83,7 @@ const UpdateBill = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Amount</th>
-              </td>
+              <th>Amount</th>
               <td>
                 <input
                   type="text"
@@ -89,9 +94,7 @@ const UpdateBill = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Bill Date</th>
-              </td>
+              <th>Bill Date</th>
               <td>
                 <input
                   type="date"
@@ -102,9 +105,7 @@ const UpdateBill = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Due Date</th>
-              </td>
+              <th>Due Date</th>
               <td>
                 <input
                   type="date"
@@ -115,9 +116,7 @@ const UpdateBill = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Payment status</th>
-              </td>
+              <th>Payment status</th>
               <td>
                 <input
                   type="text"
@@ -128,9 +127,7 @@ const UpdateBill = () => {
               </td>
             </tr>
             <tr>
-              <td>
-                <th>Items</th>
-              </td>
+              <th>Items</th>
               <td>
                 <input
                   type="text"
@@ -144,7 +141,7 @@ const UpdateBill = () => {
         </table>
         <button type="submit">Update Item</button>
       </form>
-    </>
+    </div>
   );
 };
 

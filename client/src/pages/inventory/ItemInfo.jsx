@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import baseurl from "../../config";
 import { DeleteProfile } from "../../hooks/deleteProfile";
 
+import EditIcon from "../../assets/icons/Editnormal.svg";
+import EditIconHover from "../../assets/icons/Edit.svg";
+import DeleteIcon from "../../assets/icons/deletenormal.svg";
+import DeleteIconHover from "../../assets/icons/delete.svg";
+
 const ItemInfo = () => {
   const navigate = useNavigate();
+  const [isEHovered, setIsEHovered] = useState(false);
+  const [isDHovered, setIsDHovered] = useState(false);
+
+  const handleEMouseEnter = () => {
+    setIsEHovered(true);
+  };
+  const handleDMouseEnter = () => {
+    setIsDHovered(true);
+  };
+
+  const handleEMouseLeave = () => {
+    setIsEHovered(false);
+  };
+  const handleDMouseLeave = () => {
+    setIsDHovered(false);
+  };
+
+  const EditIconSource = isEHovered ? EditIconHover : EditIcon;
+  const DeleteIconSource = isDHovered ? DeleteIconHover : DeleteIcon;
 
   const { id } = useParams();
 
@@ -19,27 +43,48 @@ const ItemInfo = () => {
   return (
     <div>
       {!loading && (
-        <>
-          <div className="page_header">
-            <h1>{item.item_name}</h1>
-            <button
-              type="button"
-              onClick={() => navigate(`/inventory/update/${id}/`)}
-            >
-              Edit
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                DeleteProfile(`${baseurl}/inventory/${item.id}/`);
-                navigate("/inventory");
-              }}
-            >
-              Delete
-            </button>
+        <div className="inventory__container">
+          <div className="information_header">
+            <div className="profile_name">Item information</div>
+            <div className="icons">
+              <img
+                src={EditIconSource}
+                alt={`edit item`}
+                title={`Edit item`}
+                onClick={() => navigate(`/inventory/update/${item?.id}`)}
+                onMouseEnter={handleEMouseEnter}
+                onMouseLeave={handleEMouseLeave}
+              />
+              <img
+                src={DeleteIconSource}
+                alt={`delete item`}
+                title={`Delete item`}
+                onClick={() => {
+                  DeleteProfile(`/inventory/${item?.id}/`);
+                  navigate("/inventory/");
+                }}
+                onMouseEnter={handleDMouseEnter}
+                onMouseLeave={handleDMouseLeave}
+              />
+            </div>
+          
           </div>
-          <div className="item_content">
-            <table>
+          <table
+            className="information_table"
+            style={{
+              margin: "2rem auto",
+            }}
+          >
+            <colgroup>
+              <col style={{ width: "40%" }} />
+              <col style={{ width: "60%" }} />
+            </colgroup>
+
+            <tbody>
+              <tr>
+                <th>Fields</th>
+                <th>Values</th>
+              </tr>
               <tr>
                 <th>Name</th>
                 <td>{item.item_name}</td>
@@ -84,9 +129,10 @@ const ItemInfo = () => {
                 <th>Notes</th>
                 <td>{item.notes}</td>
               </tr>
+              </tbody>
             </table>
           </div>
-        </>
+
       )}
     </div>
   );
