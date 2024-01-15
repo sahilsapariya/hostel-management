@@ -1,8 +1,10 @@
-import React from "react";
+
 
 import "../styles/Home.scss";
 import baseurl from "../config";
 import useFetch from "../hooks/useFetch";
+import RoomChart from "../components/charts/RoomChart";
+import BillChart from "../components/charts/BillChart";
 
 const Home = () => {
   const { data, loading, error } = useFetch(`${baseurl}/`);
@@ -13,6 +15,16 @@ const Home = () => {
 
   return (
     <div className="home__container">
+      <HomeUpperContainer data={data} />
+
+      <ChartContainer />
+    </div>
+  );
+};
+
+const HomeUpperContainer = ({ data }) => {
+  return (
+    <div className="upper__container">
       <div className="numbers">
         <div className="box">
           <p>No of students</p>
@@ -38,5 +50,16 @@ const Home = () => {
     </div>
   );
 };
+
+const ChartContainer = () => {
+  return (
+    <div className="chart__container">
+      <RoomChart title={"Room"} />
+
+      <BillChart title={"Bills"} />
+    </div>
+  );
+};
+
 
 export default Home;

@@ -17,6 +17,7 @@ const Sidebar = ({ isSidebarActive, setIsSidebarActive, setActiveMenu }) => {
               <img
                 src={closeIcon}
                 onClick={() => setIsSidebarActive(false)}
+                style={{ cursor: "pointer" }}
                 alt="close"
               />
             </div>
@@ -24,19 +25,64 @@ const Sidebar = ({ isSidebarActive, setIsSidebarActive, setActiveMenu }) => {
             <div className="menu_list">
               <ul>
                 <li>
-                  <NavLink to={"/"} activeClassName="active_menu" onClick={() => setActiveMenu("Home")}>Home</NavLink>
+                  <NavLink
+                    to={"/"}
+                    activeClassName="active_menu"
+                    onClick={() => {
+                      setActiveMenu("Home");
+                      setIsSidebarActive(false);
+                    }}
+                  >
+                    Home
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/profiles"} activeClassName="active_menu" onClick={() => setActiveMenu("Profiles")}>Profiles</NavLink>
+                  <NavLink
+                    to={"/profiles"}
+                    activeClassName="active_menu"
+                    onClick={() => {
+                      setActiveMenu("Profiles");
+                      setIsSidebarActive(false);
+                    }}
+                  >
+                    Profiles
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/bills"} activeClassName="active_menu" onClick={() => setActiveMenu("Bills")}>Bills</NavLink>
+                  <NavLink
+                    to={"/bills"}
+                    activeClassName="active_menu"
+                    onClick={() => {
+                      setActiveMenu("Bills");
+                      setIsSidebarActive(false);
+                    }}
+                  >
+                    Bills
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/rooms"} activeClassName="active_menu" onClick={() => setActiveMenu("Rooms")}>Rooms</NavLink>
+                  <NavLink
+                    to={"/rooms"}
+                    activeClassName="active_menu"
+                    onClick={() => {
+                      setActiveMenu("Rooms");
+                      setIsSidebarActive(false);
+                    }}
+                  >
+                    Rooms
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/inventory"} activeClassName="active_menu" onClick={() => setActiveMenu("Inventory")}>Inventory</NavLink>
+                  <NavLink
+                    to={"/inventory"}
+                    activeClassName="active_menu"
+                    onClick={() => {
+                      setActiveMenu("Inventory");
+                      setIsSidebarActive(false);
+                    }}
+                  >
+                    Inventory
+                  </NavLink>
                 </li>
               </ul>
             </div>

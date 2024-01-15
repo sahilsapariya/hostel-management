@@ -26,10 +26,15 @@ import Sidebar from "./components/Sidebar";
 function App() {
   const [isSidebarActive, setIsSidebarActive] = useState(false);
 
-  const [activeMenu, setActiveMenu] = useState(document.querySelector(".active")?.innerHTML);
+  const [activeMenu, setActiveMenu] = useState(
+    document.querySelector(".active")?.innerHTML
+  );
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={isSidebarActive ? { overflowY: "hidden" } : { overflowY: "unset" }}
+    >
       <BrowserRouter>
         {/* {() => localStorage.getItem("token") && <Navbar />} */}
         <Sidebar

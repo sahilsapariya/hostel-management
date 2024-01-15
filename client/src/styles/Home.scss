@@ -1,4 +1,87 @@
 .home__container {
-    background-color: black;
-    color: white;
+  width: 100%;
+  height: 100vh;
+
+  .upper__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .numbers {
+      display: flex;
+      justify-content: space-around;
+      margin: 1rem auto;
+      flex-wrap: wrap;
+
+      .box {
+        padding: 1rem;
+        margin: 1rem;
+        border: solid #404040 2px;
+        border-radius: 5px;
+
+        :first-child {
+          font-weight: 500;
+          font-size: larger;
+        }
+        :nth-child(2) {
+          font-size: 2rem;
+        }
+        :nth-child(2),
+        :first-child {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}
+
+.chart__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .chart {
+    border: solid #404040 2px;
+    border-radius: 5px;
+    width: calc(50% - 4rem - 5px);
+    margin: 1rem;
+    padding: 1rem;
+    min-width: 480px;
+
+    .chart_visuals {
+      height: calc(100% - 3rem);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .chart_diagram {
+        height: auto;
+        width: auto;
+      }
+    }
+  }
+}
+
+#bill-chart {
+  width: 450px;
+  height: 300px;
+}
+
+@media only screen and (max-width: 500px) {
+  .chart__container {
+    width: 100%;
+
+    .chart {
+      min-width: unset;
+      width: calc(100% - 4rem);
+    }
+  }
+
+  #bill-chart {
+    width: 300px;
+    height: 150px;
+  }
 }
