@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$$mfnt&t+zhsvcfmyin9=%kp)w$&xheoem6b&!li&h#7+mj3j!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'sahilsapariya.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', 'sahilsapariya.pythonanywhere.com', '127.0.0.1', 'hostel-management-olive.vercel.app']
 
 
 # Application definition
@@ -142,8 +142,8 @@ REST_FRAMEWORK = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=30),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
     "UPDATE_LAST_LOGIN": False,
