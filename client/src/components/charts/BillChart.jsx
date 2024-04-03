@@ -11,6 +11,7 @@ import {
 } from "chart.js";
 
 import React from "react";
+import Loading from "../Loading";
 
 ChartJS.register(
   LineElement,
@@ -71,7 +72,7 @@ const options = {
 };
 
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (error) return <div>Error: {error}</div>;
 
   return (

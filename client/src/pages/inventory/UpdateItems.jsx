@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import baseurl from "../../config";
 import useFetch from "../../hooks/useFetch";
 import { updateData } from "../../hooks/useUpdate";
+import Loading from "../../components/Loading";
 
 const UpdateItems = () => {
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const UpdateItems = () => {
     setItemData(initialData);
   }, [initialData]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   if (error) return <div>Something went wrong : {error}</div>;
 

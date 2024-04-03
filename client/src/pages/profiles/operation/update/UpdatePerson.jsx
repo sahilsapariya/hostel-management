@@ -6,6 +6,7 @@ import UpdateGuard from "./UpdateGuard";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../../hooks/useFetch";
 import baseurl from "../../../../config";
+import Loading from "../../../../components/Loading";
 
 const UpdatePerson = () => {
   const { category, id } = useParams();
@@ -15,7 +16,7 @@ const UpdatePerson = () => {
   );
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {

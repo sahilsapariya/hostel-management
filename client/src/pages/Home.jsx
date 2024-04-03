@@ -5,11 +5,12 @@ import baseurl from "../config";
 import useFetch from "../hooks/useFetch";
 import RoomChart from "../components/charts/RoomChart";
 import BillChart from "../components/charts/BillChart";
+import Loading from "../components/Loading";
 
 const Home = () => {
   const { data, loading, error } = useFetch(`${baseurl}/`);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   if (error) return <div>error occurded: {error}</div>;
 

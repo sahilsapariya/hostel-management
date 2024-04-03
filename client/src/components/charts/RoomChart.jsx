@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Pie } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
+import React, { useEffect, useRef, useState } from "react";
+
+import { Chart } from "chart.js/auto";
 import baseurl from "../../config";
 import useFetch from "../../hooks/useFetch";
-
 
 const RoomChart = ({ title }) => {
   const { data: rooms, loading, error } = useFetch(`${baseurl}/rooms/`);
@@ -35,7 +34,6 @@ const RoomChart = ({ title }) => {
     }
   }, [rooms]);
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
@@ -46,9 +44,45 @@ const RoomChart = ({ title }) => {
 
       <div className="chart_visuals">
         <div className="chart_diagram">
-          {roomOccupancyData && <Pie data={roomOccupancyData} />}
+          {roomOccupancyData && (
+            <PieChart
+              labels={roomOccupancyData.labels}
+              datasets={roomOccupancyData.datasets}
+            />
+          )}
         </div>
       </div>
+    </div>
+  );
+};
+
+const PieChart = ({ labels, datasets }) => {
+  const chartRef = useRef(null);
+  const chartInstance = useRef(null);
+
+  useEffect(() => {
+    if (chartInstance.current) {
+      chartInstance.current.destroy();
+    }
+    const myChartRef = chartRef.current.getContext("2d");
+
+    chartInstance.current = new Chart(myChartRef, {
+      type: "pie",
+      data: {
+        labels: labels,
+        datasets: datasets,
+      },
+    });
+
+    return () => {
+      if (chartInstance.current) {
+        chartInstance.current.destroy();
+      }
+    };
+  }, [datasets]);
+  return (
+    <div className="pie_chart">
+      <canvas ref={chartRef} width={350} height={350}></canvas>
     </div>
   );
 };

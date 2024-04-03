@@ -10,6 +10,7 @@ import baseurl from "../../config";
 
 import AddIcon from "../../assets/icons/addnormal.svg";
 import AddIconHover from "../../assets/icons/add.svg";
+import Loading from "../../components/Loading";
 
 const Profiles = () => {
   const snap = useSnapshot(store);
@@ -49,7 +50,7 @@ const Profiles = () => {
     return <div>{"error occured: " + studentError}</div>;
   }
   if (studentLoading || cooksLoading || guardsLoading || cleanersLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const students = snap.students;

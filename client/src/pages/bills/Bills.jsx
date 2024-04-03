@@ -8,6 +8,7 @@ import useFetch from "../../hooks/useFetch";
 
 import AddIcon from "../../assets/icons/addnormal.svg";
 import AddIconHover from "../../assets/icons/add.svg";
+import Loading from "../../components/Loading";
 
 const Bills = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const Bills = () => {
     error,
   } = useFetch(`${baseurl}/payments/bills/`);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   if (error) return <div>Some thing went wrong : {error}</div>;
 

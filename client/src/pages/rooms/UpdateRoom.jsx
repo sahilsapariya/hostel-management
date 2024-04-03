@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { updateData } from "../../hooks/useUpdate";
 import baseurl from "../../config";
+import Loading from "../../components/Loading";
 
 const UpdateRoom = () => {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ const UpdateRoom = () => {
     }
   }, [room]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   if (error) return <div>Something went wrong : {error}</div>;
 

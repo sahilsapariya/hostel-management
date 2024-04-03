@@ -44,7 +44,7 @@ const Login = () => {
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="sahilsapariya"
             value={formData.username}
             onChange={handleChange}
           />
@@ -53,7 +53,7 @@ const Login = () => {
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="sahil1203"
             value={formData.password}
             onChange={handleChange}
           />
