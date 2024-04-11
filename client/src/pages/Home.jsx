@@ -55,7 +55,7 @@ const HomeUpperContainer = ({ data }) => {
 const ChartContainer = () => {
   return (
     <div className="chart__container">
-      <RoomChart title={"Room"} />
+      {/* <RoomChart title={"Room"} /> */}
 
       <BillChart title={"Bills"} />
     </div>
